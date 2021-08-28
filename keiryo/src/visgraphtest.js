@@ -3,19 +3,19 @@ import './App.css';
 
 import { VictoryBar, VictoryChart, VictoryAxis,
     VictoryTheme, VictoryTooltip } from 'victory';
-    const data = [
-    {quarter: 1, earnings: 113000},
-    {quarter: 2, earnings: 16500},
-    {quarter: 3, earnings: 14250},
-    {quarter: 4, earnings: 19000,label:},
-  ];
+//     const data = [
+//     {quarter: 1, earnings: 113000},
+//     {quarter: 2, earnings: 16500},
+//     {quarter: 3, earnings: 14250},
+//     {quarter: 4, earnings: 19000,},
+//   ];
 
 function VisTestGraph() {
   return (
     <div className="App">
       
       <VictoryChart
-          labelComponent={<VictoryTooltip/>}
+          
 
         // adding the material theme provided with Victory
         theme={VictoryTheme.material}
@@ -30,7 +30,15 @@ function VisTestGraph() {
           tickFormat={(x) => (`$${x / 1000}k`)}
         />
         <VictoryBar
-          data={data}
+                  labelComponent={<VictoryTooltip/>}
+
+            data={[
+                {quarter: 1, earnings: 113000,label:"quarter 1"},
+                   {quarter: 2, earnings: 16500},
+                    {quarter: 3, earnings: 14250},
+                 {quarter: 4, earnings: 19000,},
+              ]}
+        
           x="quarter"
           y="earnings"
         />
