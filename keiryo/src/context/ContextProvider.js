@@ -1,4 +1,4 @@
-import Reactk, { useState } from "react";
+import React, { useState } from "react";
 import AppContext from ".";
 
 const ContextProvider = ({ children }) => {
@@ -10,3 +10,4 @@ const ContextProvider = ({ children }) => {
 
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;
 };
+export default ContextProvider;
