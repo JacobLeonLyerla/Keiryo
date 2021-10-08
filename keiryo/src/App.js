@@ -20,7 +20,7 @@ const App = () => {
   }, [example]);
 
   const handleChange = (e) => {
-    setFormText([e.target.date, e.target.value]);
+    setFormText(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -32,7 +32,7 @@ const App = () => {
       <header className="App-header">
         <form onSubmit={handleSubmit}>
           <label htmlFor="example">Example:</label>
-          <input type="text" date={date} value={formText} onChange={handleChange} />
+          <input type="text"  value={formText} onChange={handleChange} />
           <button>Submit</button>
         </form>
 
