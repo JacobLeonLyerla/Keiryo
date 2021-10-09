@@ -14,23 +14,21 @@ import VisTestGraph from "./visgraphtest";
 const App = () => {
   const { example, setExample } = useContext(AppContext);
   const [body, setBody] = useState({
-    date:"",
-    weight:""
+    date: "",
+    weight: "",
   });
 
-
   useEffect(() => {
-    console.log(example,body);
+    console.log(example, body);
   }, [example]);
 
   const handleChange = (e) => {
-    console.log(body)
-    setBody({...body,
-      [e.target.name]: e.target.value});
+    console.log(body);
+    setBody({ ...body, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
-    console.log(body)
+    console.log(body);
     e.preventDefault();
     setExample(body);
   };
@@ -38,11 +36,23 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         <form onSubmit={handleSubmit}>
-          <label htmlFor="example">Example:</label>
-          <input type="text" name="date" value={body.date} onChange={handleChange} />
-
-          <input type="text" name="weight" value={body.weight} onChange={handleChange} />
-
+          <label htmlFor="example">Date</label>
+          <br />
+          <input
+            type="text"
+            name="date"
+            value={body.date}
+            onChange={handleChange}
+          />
+          <br />
+          <label htmlFor="example">Weight</label> <br />
+          <input
+            type="text"
+            name="weight"
+            value={body.weight}
+            onChange={handleChange}
+          />
+          <br />
           <button>Submit</button>
         </form>
 
