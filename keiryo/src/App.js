@@ -14,7 +14,7 @@ const App = () => {
   const {example, setExample } = useContext(AppContext);
   const [body, setBody] = useState({
     date: "",
-    weight: "",
+    weight: 0,
   });
 
 useEffect(()=>{
@@ -22,7 +22,13 @@ useEffect(()=>{
 })
 
   const handleChange = (e) => {
-    setBody({...body,  [e.target.name]: e.target.value });
+    let holder;
+    if(e.target.name === "weight"){
+       holder =parseInt(e.target.value)
+    }else{
+       holder = e.target.value
+    }
+    setBody({...body,  [e.target.name]: holder });
   };
 
   const handleSubmit = (e) => {
@@ -46,7 +52,7 @@ useEffect(()=>{
           <br />
           <label htmlFor="example">Weight</label> <br />
           <input
-            type="text"
+            type="number"
             name="weight"
             value={body.weight}
             onChange={handleChange}
@@ -55,7 +61,7 @@ useEffect(()=>{
           <button>Submit</button>
         </form>
 
-        {/* <VisTestGraph/> */}
+         <VisTestGraph/> 
       </header>
     </div>
   );
