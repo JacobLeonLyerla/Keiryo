@@ -4,7 +4,7 @@ import AppContext from ".";
 const ContextProvider = ({ children }) => {
   
 
-  const [example, setExample] = useState("Hello there");
+  const [example, setExample] = useState({date:null,weight:null});
   
   const context = {
     setExample,
