@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./App.css";
 import AppContext from "./context";
 import VisTestGraph from "./visgraphtest";
@@ -17,16 +17,19 @@ const App = () => {
     weight: "",
   });
 
-
+useEffect(()=>{
+  console.log(example)
+})
 
   const handleChange = (e) => {
     setBody({...body,  [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
-    console.log(body)
+    console.log(body,example)
     e.preventDefault();
-    setExample(...example,[body]);
+    example.push(body)
+    setExample(example);
   };
   return (
     <div className="App">
@@ -52,7 +55,7 @@ const App = () => {
           <button>Submit</button>
         </form>
 
-        <VisTestGraph/>
+        {/* <VisTestGraph/> */}
       </header>
     </div>
   );
