@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./App.css";
 import AppContext from "./context";
-import BarGraph from "./testgraph";
 import VisTestGraph from "./visgraphtest";
 
 // let data=[
@@ -12,25 +11,22 @@ import VisTestGraph from "./visgraphtest";
 // ]
 
 const App = () => {
-  const { example, setExample } = useContext(AppContext);
+  const {example, setExample } = useContext(AppContext);
   const [body, setBody] = useState({
     date: "",
     weight: "",
   });
 
-  useEffect(() => {
-    console.log(example, body);
-  }, [example]);
+
 
   const handleChange = (e) => {
-    console.log(body);
-    setBody({ ...body, [e.target.name]: e.target.value });
+    setBody({...body,  [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
-    console.log(body);
+    console.log(body)
     e.preventDefault();
-    setExample(body);
+    setExample(...example,[body]);
   };
   return (
     <div className="App">
@@ -56,7 +52,7 @@ const App = () => {
           <button>Submit</button>
         </form>
 
-        {/* <VisTestGraph data={data}/> */}
+        <VisTestGraph/>
       </header>
     </div>
   );
