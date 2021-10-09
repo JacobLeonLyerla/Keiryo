@@ -1,5 +1,6 @@
-import React from "react";
+import React,{useContext,useEffect} from "react";
 import "./App.css";
+import AppContext from "./context";
 
 import {
   VictoryBar,
@@ -9,13 +10,19 @@ import {
   VictoryTooltip,
 } from "victory";
 //     const data = [
-//     {quarter: 1, earnings: 113000},
-//     {quarter: 2, earnings: 16500},
-//     {quarter: 3, earnings: 14250},
-//     {quarter: 4, earnings: 19000,},
+//     {date: 1, body: 113000},
+//     {date: 2, body: 16500},
+//     {date: 3, body: 14250},
+//     {date: 4, body: 19000,},
 //   ];
 
-function VisTestGraph(props) {
+function VisTestGraph() {
+    const { example } = useContext(AppContext);
+
+  useEffect(()=>{
+    console.log(example)
+  })
+  
   return (
     <div className="App">
       <VictoryChart
@@ -25,14 +32,14 @@ function VisTestGraph(props) {
       >
         <VictoryAxis
           tickValues={[1, 2, 3, 4]}
-          tickFormat={["Quarter 1", "Quarter 2", "Quarter 3", "Quarter 4"]}
+          tickFormat={["date 1", "date 2", "date 3", "date 4"]}
         />
         <VictoryAxis dependentAxis tickFormat={(x) => `$${x / 1000}k`} />
         <VictoryBar
           labelComponent={<VictoryTooltip />}
-          data={props.data}
-          x="quarter"
-          y="earnings"
+          data={example}
+          x="date"
+          y="body"
         />
       </VictoryChart>
     </div>
