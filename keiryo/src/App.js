@@ -13,26 +13,36 @@ import VisTestGraph from "./visgraphtest";
 
 const App = () => {
   const { example, setExample } = useContext(AppContext);
-  const [formText, setFormText] = useState("");
+  const [body, setBody] = useState({
+    date:"",
+    weight:""
+  });
+
 
   useEffect(() => {
-    console.log("Context Here: ", example);
+    console.log(example,body);
   }, [example]);
 
   const handleChange = (e) => {
-    setFormText(e.target.value);
+    console.log(body)
+    setBody({...body,
+      [e.target.name]: e.target.value});
   };
 
   const handleSubmit = (e) => {
+    console.log(body)
     e.preventDefault();
-    setExample(formText);
+    setExample(body);
   };
   return (
     <div className="App">
       <header className="App-header">
         <form onSubmit={handleSubmit}>
           <label htmlFor="example">Example:</label>
-          <input type="text"  value={formText} onChange={handleChange} />
+          <input type="text" name="date" value={body.date} onChange={handleChange} />
+
+          <input type="text" name="weight" value={body.weight} onChange={handleChange} />
+
           <button>Submit</button>
         </form>
 
