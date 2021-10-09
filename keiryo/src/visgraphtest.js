@@ -39,7 +39,7 @@ function VisTestGraph() {
           labelComponent={<VictoryTooltip />}
           data={example}
           x="date"
-          y="body"
+          y="weight"
         />
       </VictoryChart>
     </div>
